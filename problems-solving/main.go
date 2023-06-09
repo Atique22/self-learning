@@ -70,8 +70,31 @@ func reverseString(str string) string {
 }
 
 // Factorial: Write a function that calculates the factorial of a given number n.
+func factorial(n int) int {
+	res := 1
+	if n == 0 {
+		return res
+	} else {
+		for i := 1; i <= n; i++ {
+			res = res * i
+		}
+	}
+
+	return res
+}
 
 // Find Duplicates: Write a function that finds and returns any duplicates in a given array or slice.
+func duplicates(arr []int, size int) []int {
+	duplicates := []int{}
+	for i := 0; i < size; i++ {
+		for j := i + 1; j < size; j++ {
+			if arr[i] == arr[j] {
+				duplicates = append(duplicates, arr[i])
+			}
+		}
+	}
+	return duplicates
+}
 
 // Binary Search: Implement a binary search algorithm that searches for a given target value in a sorted array.
 
@@ -123,9 +146,30 @@ func main() {
 		fmt.Println("\nReverse string is: ", myStr)
 
 	case 5:
-		fmt.Println("5.Factorial:")
+		fmt.Print("\n\n5.Factorial: \n\n Enter n number: ")
+		var n int
+		fmt.Scan(&n)
+		res := factorial(n)
+		fmt.Print("Factorial is :", res)
+
 	case 6:
 		fmt.Println("6.Find Duplicates:")
+		var size int
+
+		fmt.Print("Enter the size of the array: ")
+		fmt.Scanln(&size)
+
+		// Create an array with the specified size
+		array := make([]int, size)
+
+		// Prompt the user to enter values for each element
+		for i := 0; i < size; i++ {
+			fmt.Printf("Enter element at index %d: ", i)
+			fmt.Scan(&array[i])
+		}
+		dpArr := duplicates(array, size)
+		fmt.Println("Duplicates:", dpArr)
+
 	case 7:
 		fmt.Println("7.Binary Search:")
 	case 8:
@@ -137,7 +181,7 @@ func main() {
 	case 11:
 		fmt.Println("11.Matrix Operations:")
 	default:
-		fmt.Println("\n\n Enter valid input")
+		fmt.Println("\n\n Enter a valid input")
 
 	}
 }
