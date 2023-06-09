@@ -53,6 +53,21 @@ func palindromeCheck(str string) bool {
 }
 
 // Reverse String: Write a function that reverses a given string without using the built-in reverse function.
+func reverseString(str string) string {
+	runes := []rune(str)
+	length := len(runes)
+
+	// Iterate over the rune slice and swap characters
+	for i, j := 0, length-1; i < j; i, j = i+1, j-1 {
+		// Swap the characters at i and j indices
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+
+	// Convert the rune slice back to a string
+	reversedStr := string(runes)
+
+	return reversedStr
+}
 
 // Factorial: Write a function that calculates the factorial of a given number n.
 
@@ -101,7 +116,12 @@ func main() {
 			fmt.Println("  ", str, "is No Palindrome")
 		}
 	case 4:
-		fmt.Println("4.Reverse String:")
+		fmt.Print("\n\n4.Reverse String:\n\n Enter string: ")
+		var str string
+		fmt.Scan(&str)
+		myStr := reverseString(str)
+		fmt.Println("\nReverse string is: ", myStr)
+
 	case 5:
 		fmt.Println("5.Factorial:")
 	case 6:
