@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"os"
 )
 
 // Fibonacci Sequence: Write a function that calculates the Fibonacci sequence up to a given number n and returns the sequence as an array or slice.
@@ -107,81 +108,81 @@ func duplicates(arr []int, size int) []int {
 func main() {
 
 	var input int
+	for {
+		fmt.Print("\n 1.Fibonacci Sequence: \n 2.Prime Numbers: \n 3.Palindrome Check: \n 4.Reverse String: \n 5.Factorial:\n 6.Find Duplicates:\n 7.Binary Search:\n 8.Anagram Check: \n 9.same characters in a different order\n 10.Word Count: \n 11.Matrix Operations: \n Other.Break this Program: \n\n Enter a number for problem give in sequence: ")
+		fmt.Scan(&input)
 
-	fmt.Print("\n 1.Fibonacci Sequence: \n 2.Prime Numbers: \n 3.Palindrome Check: \n 4.Reverse String: \n 5.Factorial:\n 6.Find Duplicates:\n 7.Binary Search:\n 8.Anagram Check: \n 9.same characters in a different order\n 10.Word Count: \n 11.Matrix Operations: \n\n Enter a number for problem give in sequence: ")
-	fmt.Scan(&input)
+		switch input {
+		case 1:
+			fmt.Print("\n\n 1.Fibonacci Sequence: \n\n To calculates the Fibonacci sequence up to a given number n, enter n number: ")
+			var n int
+			fmt.Scan(&n)
+			fibonacciSequence(n)
 
-	switch input {
-	case 1:
-		fmt.Print("\n\n 1.Fibonacci Sequence: \n\n To calculates the Fibonacci sequence up to a given number n, enter n number: ")
-		var n int
-		fmt.Scan(&n)
-		fibonacciSequence(n)
+		case 2:
+			fmt.Print("\n\n 2.Prime Numbers: \n\n To calculates whether a given number n is prime or not., enter n number: ")
+			var n int
+			fmt.Scan(&n)
+			primeNumbers(n)
+			if primeNumbers(n) {
+				fmt.Println("  ", n, "is a prime number.")
+			} else {
+				fmt.Println("  ", n, "is not a prime number.")
+			}
+		case 3:
+			fmt.Println(" 3.Palindrome Check: \n\n To Check Palindrome, enter string: ")
+			var str string
+			fmt.Scan(&str)
+			palindromeCheck(str)
+			if palindromeCheck(str) {
+				fmt.Println("  ", str, "is Palindrome")
+			} else {
+				fmt.Println("  ", str, "is No Palindrome")
+			}
+		case 4:
+			fmt.Print("\n\n4.Reverse String:\n\n Enter string: ")
+			var str string
+			fmt.Scan(&str)
+			myStr := reverseString(str)
+			fmt.Println("\nReverse string is: ", myStr)
 
-	case 2:
-		fmt.Print("\n\n 2.Prime Numbers: \n\n To calculates whether a given number n is prime or not., enter n number: ")
-		var n int
-		fmt.Scan(&n)
-		primeNumbers(n)
-		if primeNumbers(n) {
-			fmt.Println("  ", n, "is a prime number.")
-		} else {
-			fmt.Println("  ", n, "is not a prime number.")
+		case 5:
+			fmt.Print("\n\n5.Factorial: \n\n Enter n number: ")
+			var n int
+			fmt.Scan(&n)
+			res := factorial(n)
+			fmt.Print("Factorial is :", res)
+
+		case 6:
+			fmt.Println("6.Find Duplicates:")
+			var size int
+
+			fmt.Print("Enter the size of the array: ")
+			fmt.Scanln(&size)
+
+			// Create an array with the specified size
+			array := make([]int, size)
+
+			// Prompt the user to enter values for each element
+			for i := 0; i < size; i++ {
+				fmt.Printf("Enter element at index %d: ", i)
+				fmt.Scan(&array[i])
+			}
+			dpArr := duplicates(array, size)
+			fmt.Println("Duplicates:", dpArr)
+
+		case 7:
+			fmt.Println("7.Binary Search:")
+		case 8:
+			fmt.Println("8.Anagram Check: ")
+		case 9:
+			fmt.Println("9.same characters")
+		case 10:
+			fmt.Println("10.Word Count:")
+		case 11:
+			fmt.Println("11.Matrix Operations:")
+		default:
+			os.Exit(0)
 		}
-	case 3:
-		fmt.Println(" 3.Palindrome Check: \n\n To Check Palindrome, enter string: ")
-		var str string
-		fmt.Scan(&str)
-		palindromeCheck(str)
-		if palindromeCheck(str) {
-			fmt.Println("  ", str, "is Palindrome")
-		} else {
-			fmt.Println("  ", str, "is No Palindrome")
-		}
-	case 4:
-		fmt.Print("\n\n4.Reverse String:\n\n Enter string: ")
-		var str string
-		fmt.Scan(&str)
-		myStr := reverseString(str)
-		fmt.Println("\nReverse string is: ", myStr)
-
-	case 5:
-		fmt.Print("\n\n5.Factorial: \n\n Enter n number: ")
-		var n int
-		fmt.Scan(&n)
-		res := factorial(n)
-		fmt.Print("Factorial is :", res)
-
-	case 6:
-		fmt.Println("6.Find Duplicates:")
-		var size int
-
-		fmt.Print("Enter the size of the array: ")
-		fmt.Scanln(&size)
-
-		// Create an array with the specified size
-		array := make([]int, size)
-
-		// Prompt the user to enter values for each element
-		for i := 0; i < size; i++ {
-			fmt.Printf("Enter element at index %d: ", i)
-			fmt.Scan(&array[i])
-		}
-		dpArr := duplicates(array, size)
-		fmt.Println("Duplicates:", dpArr)
-
-	case 7:
-		fmt.Println("7.Binary Search:")
-	case 8:
-		fmt.Println("8.Anagram Check: ")
-	case 9:
-		fmt.Println("9.same characters")
-	case 10:
-		fmt.Println("10.Word Count:")
-	case 11:
-		fmt.Println("11.Matrix Operations:")
-	default:
-		fmt.Println("\n\n Enter a valid input")
-
 	}
 }
