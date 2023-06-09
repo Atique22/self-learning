@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"math"
 	"os"
+	"sort"
+	"strings"
 )
 
 // Fibonacci Sequence: Write a function that calculates the Fibonacci sequence up to a given number n and returns the sequence as an array or slice.
@@ -118,6 +120,28 @@ func binarySearch(array []int, target int) int {
 }
 
 // Anagram Check: Write a function that checks whether two given strings are anagrams (contain the same characters in a different order).
+func areAnagrams(str1, str2 string) bool {
+	// Remove spaces and convert strings to lowercase
+	str1 = strings.ReplaceAll(str1, " ", "")
+	str2 = strings.ReplaceAll(str2, " ", "")
+	str1 = strings.ToLower(str1)
+	str2 = strings.ToLower(str2)
+
+	// Convert strings to slices of characters
+	slice1 := strings.Split(str1, "")
+	slice2 := strings.Split(str2, "")
+
+	// Sort the slices
+	sort.Strings(slice1)
+	sort.Strings(slice2)
+
+	// Convert the sorted slices back to strings
+	sortedStr1 := strings.Join(slice1, "")
+	sortedStr2 := strings.Join(slice2, "")
+
+	// Check if the sorted strings are equal
+	return sortedStr1 == sortedStr2
+}
 
 // Word Count: Write a function that counts the occurrence of each word in a given string and returns the word count as a map.
 
@@ -202,6 +226,17 @@ func main() {
 			}
 		case 8:
 			fmt.Println("8.Anagram Check: ")
+			var str1, str2 string
+			fmt.Println("Enter string1: ")
+			fmt.Scan(&str1)
+			fmt.Println("Enter string1: ")
+			fmt.Scan(&str2)
+
+			if areAnagrams(str1, str2) {
+				fmt.Printf("%s and %s are anagrams.\n", str1, str2)
+			} else {
+				fmt.Printf("%s and %s are not anagrams.\n", str1, str2)
+			}
 		case 9:
 			fmt.Println("9.same characters")
 		case 10:
