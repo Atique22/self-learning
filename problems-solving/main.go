@@ -98,6 +98,24 @@ func duplicates(arr []int, size int) []int {
 }
 
 // Binary Search: Implement a binary search algorithm that searches for a given target value in a sorted array.
+func binarySearch(array []int, target int) int {
+	left := 0
+	right := len(array) - 1
+
+	for left <= right {
+		mid := left + (right-left)/2
+
+		if array[mid] == target {
+			return mid // Target found at index mid
+		} else if array[mid] < target {
+			left = mid + 1 // Target is in the right half
+		} else {
+			right = mid - 1 // Target is in the left half
+		}
+	}
+
+	return -1 // Target not found in the array
+}
 
 // Anagram Check: Write a function that checks whether two given strings are anagrams (contain the same characters in a different order).
 
@@ -172,7 +190,16 @@ func main() {
 			fmt.Println("Duplicates:", dpArr)
 
 		case 7:
-			fmt.Println("7.Binary Search:")
+			fmt.Println("7.Binary Search: \n\n Enter target number: ")
+			array := []int{1, 3, 5, 7, 9, 11, 13, 15, 17}
+			var target int
+			fmt.Scan(&target)
+			result := binarySearch(array, target)
+			if result == -1 {
+				fmt.Println("Target not found in the array.")
+			} else {
+				fmt.Printf("Target found at index %d.\n", result)
+			}
 		case 8:
 			fmt.Println("8.Anagram Check: ")
 		case 9:
