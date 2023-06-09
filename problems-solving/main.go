@@ -144,6 +144,20 @@ func areAnagrams(str1, str2 string) bool {
 }
 
 // Word Count: Write a function that counts the occurrence of each word in a given string and returns the word count as a map.
+func countWords(sentence string) map[string]int {
+	// Split the sentence into words
+	words := strings.Fields(sentence)
+
+	// Create a map to store the word count
+	wordCount := make(map[string]int)
+
+	// Count the occurrence of each word
+	for _, word := range words {
+		wordCount[word]++
+	}
+
+	return wordCount
+}
 
 // Matrix Operations: Implement functions to perform basic matrix operations such as matrix addition, multiplication, and transposition.
 
@@ -151,7 +165,7 @@ func main() {
 
 	var input int
 	for {
-		fmt.Print("\n 1.Fibonacci Sequence: \n 2.Prime Numbers: \n 3.Palindrome Check: \n 4.Reverse String: \n 5.Factorial:\n 6.Find Duplicates:\n 7.Binary Search:\n 8.Anagram Check: \n 9.same characters in a different order\n 10.Word Count: \n 11.Matrix Operations: \n Other.Break this Program: \n\n Enter a number for problem give in sequence: ")
+		fmt.Print("\n 1.Fibonacci Sequence: \n 2.Prime Numbers: \n 3.Palindrome Check: \n 4.Reverse String: \n 5.Factorial:\n 6.Find Duplicates:\n 7.Binary Search:\n 8.Anagram Check: \n 9.Word Count:  \n Other.Break this Program: \n\n Enter a number for problem give in sequence: ")
 		fmt.Scan(&input)
 
 		switch input {
@@ -238,11 +252,16 @@ func main() {
 				fmt.Printf("%s and %s are not anagrams.\n", str1, str2)
 			}
 		case 9:
-			fmt.Println("9.same characters")
-		case 10:
-			fmt.Println("10.Word Count:")
-		case 11:
-			fmt.Println("11.Matrix Operations:")
+			fmt.Println("9.Word Count:")
+			var sentence string
+			fmt.Println("Enter sentence: ")
+			fmt.Scan(&sentence)
+			wordCount := countWords(sentence)
+
+			// Print the word count
+			for word, count := range wordCount {
+				fmt.Printf("%s: %d\n", word, count)
+			}
 		default:
 			os.Exit(0)
 		}
